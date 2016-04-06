@@ -34,6 +34,9 @@ def ping(host):
 def get_network_status():
     ips = redis.keys()
     message = []
+    ni.ifaddresses('eth0')
+    ip = ni.ifaddresses('eth0')[2][0]['addr']
+    message.append('current ip is {}'.format(ip))
     for ip in ips:
         res = ping(ip)
         str_message = 'ping {} response is {}'.format(ip, res)

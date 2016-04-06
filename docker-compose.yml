@@ -1,9 +1,14 @@
 web:
-  build: .
+  image: registry.aliyuncs.com/xianlu/test-link
   command: python test-link.py
+  restart: always
   ports:
-    - "5000:5000"
+      - 5000
   links:
-    - redis
+      - redis
+  labels:
+      aliyun.scale: '3'
+      aliyun.routing.port_5000: test-link;
 redis:
   image: redis
+  restart: always
