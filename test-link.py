@@ -48,5 +48,5 @@ def get_network_status():
     return '<br/>'.join(message)
 
 if __name__ == '__main__':
-    # add_record()
+    add_record()
     app.run(host='0.0.0.0', debug=True)
