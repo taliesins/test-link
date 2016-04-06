@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import make_response
 from redis import Redis
 import netifaces as ni
 import logging
@@ -42,8 +43,10 @@ def get_network_status():
         str_message = 'ping {} response is {}'.format(ip, res)
         logging.info(str_message)
         message.append(str_message)
+    resp = make_response()
+    resp.set_cookie('CONTAINERID', expires=0)
     return '<br/>'.join(message)
 
 if __name__ == '__main__':
-    add_record()
+    # add_record()
     app.run(host='0.0.0.0', debug=True)
