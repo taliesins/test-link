@@ -6,9 +6,8 @@ web:
       - 5000
   links:
       - redis
-  labels:
-      aliyun.scale: '3'
-      aliyun.routing.port_5000: test-link;
+  deploy:
+      mode: global
 redis:
   image: redis
   restart: always
